@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'signup.dart';
 
 void main() => runApp(new MyApp());
 
@@ -7,6 +8,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: <String, WidgetBuilder>{
+        '/signup': (BuildContext context) => new SignupPage()
+      },
       home: new MyHomePage(),
     );
   }
@@ -133,11 +137,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         border: Border.all(
                             color: Colors.black,
                             style: BorderStyle.solid,
-                            width: 1.4
-                            ), borderRadius: BorderRadius.circular(20.0),
-                            color: Colors.transparent
-                            
-                            ),
+                            width: 1.4),
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: Colors.transparent),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -156,6 +158,30 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
+                ),
+                SizedBox(height: 15.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      'New Account ?',
+                      style: TextStyle(fontFamily: 'Montserrat'),
+                    ),
+                    SizedBox(width: 5.0),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed('/signup');
+                      },
+                      child: Text(
+                        'Register',
+                        style: TextStyle(
+                            color: Colors.green,
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline),
+                      ),
+                    )
+                  ],
                 )
               ],
             ),
